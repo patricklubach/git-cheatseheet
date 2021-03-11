@@ -71,3 +71,12 @@ Get difference between two files from different branches:
 ```bash
 git diff mybranch master -- myfile.cs
 ```
+
+Save and revert work:
+
+```bash
+git stash       # Create git stash
+git stash list  # Shows list of all stashes
+git stash pop   # Applies changes to workspace
+git stash clear # Clears stash list
+```
