@@ -80,3 +80,45 @@ git stash list  # Shows list of all stashes
 git stash pop   # Applies changes to workspace
 git stash clear # Clears stash list
 ```
+
+Re-order commits or combine non-consecutive commits:
+
+```bash
+git rebase --interactive COMMIT_ID
+```
+
+Git will open an editor, and you see a file like this, ex: `git rebase --interactive HEAD~4`
+
+```bash
+pick aaaaaaa Commit A
+pick bbbbbbb Commit B
+pick ccccccc Commit C
+pick ddddddd Commit D
+
+# Rebase aaaaaaa..ddddddd onto 1234567 (4 command(s))
+#
+# Commands:
+# p, pick = use commit
+# r, reword = use commit, but edit the commit message
+# e, edit = use commit, but stop for amending
+# s, squash = use commit, but meld into previous commit
+# f, fixup = like "squash", but discard this commit's log message
+# x, exec = run command (the rest of the line) using shell
+#
+# These lines can be re-ordered; they are executed from top to bottom.
+#
+# If you remove a line here THAT COMMIT WILL BE LOST.
+#
+# However, if you remove everything, the rebase will be aborted.
+#
+# Note that empty commits are commented out
+```
+
+Now you change the file that it looks like this:
+
+```bash
+pick aaaaaaa Commit A
+squash ddddddd Commit D
+pick bbbbbbb Commit B
+pick ccccccc Commit C
+```
